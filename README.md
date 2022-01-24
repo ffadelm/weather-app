@@ -1,9 +1,8 @@
 # weather-app
 
 ## Website Demo
-```
 https://glacial-spire-21606.herokuapp.com/
-```
+
 
 ## Project setup
 ```
