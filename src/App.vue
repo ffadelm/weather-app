@@ -1,10 +1,15 @@
 <template>
-  <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp < 16 ? 'cold' : ''">
+  <div
+    id="app"
+    :class="
+      typeof weather.main != 'undefined' && weather.main.temp < 16 ? 'cold' : ''
+    "
+  >
     <main>
       <div class="search-box">
-        <input 
-          type="text" 
-          class="search-bar" 
+        <input
+          type="text"
+          class="search-bar"
           placeholder="Search..."
           v-model="query"
           @keypress="fetchWeather"
@@ -13,7 +18,9 @@
 
       <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
         <div class="location-box">
-          <div class="location">{{ weather.name }}, {{ weather.sys.country }}</div>
+          <div class="location">
+            {{ weather.name }}, {{ weather.sys.country }}
+          </div>
           <div class="date">{{ dateBuilder() }}</div>
         </div>
 
@@ -34,7 +41,7 @@ export default {
       api_key: "ec3c9e0914a0fcbe7eb1e1469ab9b9f8",
       url_base: "https://api.openweathermap.org/data/2.5/",
       query: "",
-      weather: {}
+      weather: {},
     };
   },
   methods: {
@@ -43,7 +50,7 @@ export default {
         fetch(
           `${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`
         )
-          .then(res => res.json())
+          .then((res) => res.json())
           .then(this.setResult);
       }
     },
@@ -64,7 +71,7 @@ export default {
         "September",
         "October",
         "November",
-        "December"
+        "December",
       ];
       let days = [
         "Sunday",
@@ -73,7 +80,7 @@ export default {
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday"
+        "Saturday",
       ];
 
       let day = days[d.getDay()];
@@ -82,8 +89,8 @@ export default {
       let year = d.getFullYear();
 
       return `${day} ${date} ${month} ${year}`;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -188,7 +195,7 @@ main {
   text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
 }
 
-#app.cold{
+#app.cold {
   background-image: url("./assets/cold.jpg");
 }
 </style>
